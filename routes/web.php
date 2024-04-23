@@ -24,7 +24,9 @@ Route::group(['prefix' => 'email'], function(){
 Route::group(['prefix' => 'apps'], function(){
     Route::get('chat', function () { return view('pages.apps.chat'); });
     Route::get('calendar', function () { return view('pages.apps.calendar'); });
+    Route::get('ficheros', function () { return view('pages.apps.ficheros'); });
 });
+
 
 Route::group(['prefix' => 'ui-components'], function(){
     Route::get('accordion', function () { return view('pages.ui-components.accordion'); });

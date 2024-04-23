@@ -51,6 +51,12 @@
           <span class="link-title">Calendar</span>
         </a>
       </li>
+      <li class="nav-item {{ active_class(['apps/ficheros']) }}">
+        <a href="{{ url('/apps/ficheros') }}" class="nav-link">
+          <i class="link-icon" data-feather="calendar"></i>
+          <span class="link-title">Ficheros</span>
+        </a>
+      </li>
       <li class="nav-item nav-category">Components</li>
       <li class="nav-item {{ active_class(['ui-components/*']) }}">
         <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="{{ is_active_route(['ui-components/*']) }}" aria-controls="uiComponents">
