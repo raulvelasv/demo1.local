@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,11 @@ Route::group(['prefix' => 'apps'], function(){
     Route::get('chat', function () { return view('pages.apps.chat'); });
     Route::get('calendar', function () { return view('pages.apps.calendar'); });
     Route::get('ficheros', function () { return view('pages.apps.ficheros'); });
+    Route::post('ficheros', 'ficheroController@upload')->name('upload.post');
+    Route::get('ficheros', function () {
+    return view('pages.apps.ficheros');
+})->name('upload.get');
+
 });
 
 

@@ -312,7 +312,7 @@
     <div class="card">
       <div class="card-body">
         <h6 class="card-title">Input Size</h6>
-        <p class="mb-3">Use class <code>.form-control-lg</code> or <code>.form-control-sm</code></p>								
+        <p class="mb-3">Use class <code>.form-control-lg</code> or <code>.form-control-sm</code></p>
         <form>
           <div class="mb-3">
             <label for="colFormLabelSm" class="form-label">Small</label>
