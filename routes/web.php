@@ -1,5 +1,7 @@
+
 <?php
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,15 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('dashboard');
 });
+
 
 Route::group(['prefix' => 'email'], function(){
     Route::get('inbox', function () { return view('pages.email.inbox'); });
     Route::get('read', function () { return view('pages.email.read'); });
     Route::get('compose', function () { return view('pages.email.compose'); });
 });
+
 
 Route::group(['prefix' => 'apps'], function(){
     Route::get('chat', function () { return view('pages.apps.chat'); });
@@ -30,8 +35,16 @@ Route::group(['prefix' => 'apps'], function(){
     Route::get('ficheros', function () {
     return view('pages.apps.ficheros');
 })->name('upload.get');
+    Route::get('ficherosOneDrive', function () { return view('pages.apps.ficherosOneDrive'); });
+    Route::post('ficherosOneDrive', 'ficheroController@uploadOneDrive')->name('uploadOneDrive.post');
+    Route::get('ficherosOneDrive', function () {
+    return view('pages.apps.ficherosOneDrive');
+    })->name('uploadOneDrive.get');
+
 
 });
+
+
 
 
 Route::group(['prefix' => 'ui-components'], function(){
@@ -60,6 +73,7 @@ Route::group(['prefix' => 'ui-components'], function(){
     Route::get('tooltips', function () { return view('pages.ui-components.tooltips'); });
 });
 
+
 Route::group(['prefix' => 'advanced-ui'], function(){
     Route::get('cropper', function () { return view('pages.advanced-ui.cropper'); });
     Route::get('owl-carousel', function () { return view('pages.advanced-ui.owl-carousel'); });
@@ -67,12 +81,14 @@ Route::group(['prefix' => 'advanced-ui'], function(){
     Route::get('sweet-alert', function () { return view('pages.advanced-ui.sweet-alert'); });
 });
 
+
 Route::group(['prefix' => 'forms'], function(){
     Route::get('basic-elements', function () { return view('pages.forms.basic-elements'); });
     Route::get('advanced-elements', function () { return view('pages.forms.advanced-elements'); });
     Route::get('editors', function () { return view('pages.forms.editors'); });
     Route::get('wizard', function () { return view('pages.forms.wizard'); });
 });
+
 
 Route::group(['prefix' => 'charts'], function(){
     Route::get('apex', function () { return view('pages.charts.apex'); });
@@ -82,15 +98,18 @@ Route::group(['prefix' => 'charts'], function(){
     Route::get('sparkline', function () { return view('pages.charts.sparkline'); });
 });
 
+
 Route::group(['prefix' => 'tables'], function(){
     Route::get('basic-tables', function () { return view('pages.tables.basic-tables'); });
     Route::get('data-table', function () { return view('pages.tables.data-table'); });
 });
 
+
 Route::group(['prefix' => 'icons'], function(){
     Route::get('feather-icons', function () { return view('pages.icons.feather-icons'); });
     Route::get('mdi-icons', function () { return view('pages.icons.mdi-icons'); });
 });
+
 
 Route::group(['prefix' => 'general'], function(){
     Route::get('blank-page', function () { return view('pages.general.blank-page'); });
@@ -101,22 +120,28 @@ Route::group(['prefix' => 'general'], function(){
     Route::get('timeline', function () { return view('pages.general.timeline'); });
 });
 
+
 Route::group(['prefix' => 'auth'], function(){
     Route::get('login', function () { return view('pages.auth.login'); });
     Route::get('register', function () { return view('pages.auth.register'); });
 });
+
 
 Route::group(['prefix' => 'error'], function(){
     Route::get('404', function () { return view('pages.error.404'); });
     Route::get('500', function () { return view('pages.error.500'); });
 });
 
+
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return "Cache is cleared";
 });
 
+
 // 404 for undefined routes
 Route::any('/{page?}',function(){
     return View::make('pages.error.404');
 })->where('page','.*');
+
+
